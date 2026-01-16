@@ -30,3 +30,42 @@ def send_email(to_email: str,subject: str,body:str):
             server.login(SENDER_EMAIL,SENDER_PASSWORD)
             server.send_message(msg)
             
+    except Exception as e:
+        raise HTTPException(status_code=500,detail=f"Failed to send email: {str(e)}")
+    
+@app.post("/preview")
+def preview_email(data: CandidateEmailRequest):
+    template = (
+        selection_template if data.status == "selected" else rejection_template
+    )
+
+    email_body = template.format(
+        name=data.name,
+        position=data.position
+    )
+
+    return {
+        "to": data.email,
+        "subject": f"Regarding your application for {data.position}",
+        "body": email_body
+    }
+
+
+@app.post("/send")
+def send_candidate_email(data: CandidateEmailRequest):
+    template = (
+        selection_template if data.status == "selected" else rejection_template
+    )
+
+    email_body = template.format(
+        name=data.name,
+        position=data.position
+    )
+
+    send_email(
+        to_email=data.email,
+        subject=f"Regarding your application for {data.position}",
+        body=email_body
+    )
+
+    return {"message": "Email sent successfully"}
