@@ -1,90 +1,73 @@
-# Simple HR Email Response Tool
+# 📧 HR Candidate Email Response Tool
 
-### Task Title
-Build a Simple HR Candidate Email Response Tool
+A lightweight, full-stack web application designed to help HR teams streamline candidate communication. This tool allows users to input candidate details, select their status (Selected/Rejected), and send professional emails using predefined templates.
 
-### Task Description
-Create a simple web application that helps HR send email responses to job candidates. The application should allow users to input candidate details, select their status (Selected/Rejected), and send appropriate email responses using predefined templates.
+## 🚀 Features
+- **Automated Templates:** Dynamically generates emails using candidate names and job positions.
+- **Instant Preview:** Real-time preview of the email content before sending.
+- **Modern UI:** Responsive design built with Tailwind CSS.
+- **Secure Backend:** FastAPI logic with environment variable protection for SMTP credentials.
+- **Data Validation:** Strict type-checking using Pydantic to ensure valid email delivery.
 
-### Technical Requirements
-- Frontend: HTML, CSS, and JavaScript
-- Backend: Any language of choice (PHP, Python, Node.js, etc.)
-- Simple form handling
-- Email sending functionality
-- No database required (use predefined templates in code)
+---
 
-### Steps to Complete
+## 📂 Project Structure
+```text
+root/
+├── frontend/
+│   └── index.html          # Web interface & JavaScript Fetch logic
+├── backend/
+│   ├── main.py             # FastAPI entry point & SMTP logic
+│   ├── schemas.py          # Pydantic data models
+│   └── email_templates.py  # Email string constants
+├── .env                    # Private credentials (not to be shared)
+├── requirements.txt        # Python dependencies
+└── README.md               # Project documentation
 
-1. **Create the Form Interface**
-   - Create a simple form with:
-     - Radio buttons for status (Selected/Rejected)
-     - Input field for candidate name
-     - Input field for candidate email
-     - Input field for position applied
-   - Add basic form validation
 
-2. **Set Up Email Templates**
-   - Create two simple email templates in your code:
-     - Selection email template
-     - Rejection email template
-   - Templates should include placeholders for candidate name and position
+🛠️ Setup Instructions
+1. Backend Setup (Python 3.8+)
+Navigate to the backend directory and install dependencies:
 
-3. **Implement Email Functionality**
-   - Set up email sending functionality using your chosen backend language
-   - Replace template placeholders with form data
-   - Add a preview before sending
-   - Implement the send functionality
+Bash
 
-4. **Add Basic Styling**
-   - Make the form look clean and professional
-   - Add success/error messages
-   - Make it mobile-responsive
+pip install fastapi uvicorn pydantic[email] python-dotenv
+2. Configure Email Settings
+Create a .env file in the root directory and add your SMTP credentials:
 
-### Example Templates
+Plaintext
 
-**Selection Template:**
-```
-Dear [Candidate Name],
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SENDER_EMAIL=your-email@gmail.com
+SENDER_PASSWORD=your-app-password
+Note: If using Gmail, you must generate an App Password in your Google Account security settings.
 
-We are pleased to inform you that you have been selected for the position of [Position].
+3. Run the Application
+Start the FastAPI server:
 
-Please reply to this email to confirm your acceptance.
+Bash
 
-Best regards,
-HR Team
-```
+uvicorn backend.main:app --reload
+The backend will be running at http://127.0.0.1:8000.
 
-**Rejection Template:**
-```
-Dear [Candidate Name],
+4. Launch the Frontend
+Simply open frontend/index.html in any modern web browser.
 
-Thank you for applying for the position of [Position].
+📖 How to Use
+Enter the Candidate Name, Email, and the Position they applied for.
 
-We regret to inform you that we have decided to move forward with other candidates.
+Select their application Status (Selected or Rejected).
 
-Best regards,
-HR Team
-```
+Click Preview to review the generated text.
 
-### Notes
-- Keep the code simple and well-organized
-- Focus on making the tool functional rather than fancy
-- Use proper error handling for email sending
-- Test the email functionality thoroughly
-- Comment your code appropriately
+Click Send Email to deliver the message via the SMTP server.
 
-### Submission Requirements
-- Source code uploaded to GitHub
-- README file with:
-  - Setup instructions
-  - How to configure email settings
-  - How to run the application
+🛡️ Technical Highlights
+Frontend: HTML5, JavaScript (Async/Await Fetch), Tailwind CSS.
 
-### Time Estimate
-- Estimated completion time: 2-3 hours
+Backend: Python (FastAPI framework).
 
-### Technical Tips
-- Use a simple email library/function in your chosen language
-- Store email templates as constants/variables
-- Keep styling simple but professional
-- Test with different email providers
+Security: CORS middleware enabled for local development; Sensitive data stored in .env.
+
+Formatting: Used Python triple-quoted strings and .format() for clean template injection.
