@@ -26,49 +26,53 @@ root/
 
 ---
 
-🛠️ Setup Instructions
-1. Backend Setup (Python 3.8+)
+## 🛠️ Setup Instructions
+
+### 1. Backend Setup (Python 3.8+)
 Navigate to the backend directory and install dependencies:
 
-Bash
-
+```bash
 pip install fastapi uvicorn pydantic[email] python-dotenv
-2. Configure Email Settings
+```
+
+### 2. Configure Email Settings
 Create a .env file in the root directory and add your SMTP credentials:
 
-Plaintext
-
+```plaintext
 SMTP_SERVER=smtp.gmail.com
 SMTP_PORT=587
 SENDER_EMAIL=your-email@gmail.com
 SENDER_PASSWORD=your-app-password
-Note: If using Gmail, you must generate an App Password in your Google Account security settings.
+```
 
-3. Run the Application
+**Note:** If using Gmail, you must generate an App Password in your Google Account security settings.
+
+### 3. Run the Application
 Start the FastAPI server:
 
-Bash
-
+```bash
 uvicorn backend.main:app --reload
-The backend will be running at http://127.0.0.1:8000.
+```
 
-4. Launch the Frontend
-Simply open frontend/index.html in any modern web browser.
+The backend will be running at `http://127.0.0.1:8000`.
 
-📖 How to Use
-Enter the Candidate Name, Email, and the Position they applied for.
+### 4. Launch the Frontend
+Simply open `frontend/index.html` in any modern web browser.
 
-Select their application Status (Selected or Rejected).
+---
 
-Click Preview to review the generated text.
+## 📖 How to Use
 
-Click Send Email to deliver the message via the SMTP server.
+1. Enter the Candidate Name, Email, and the Position they applied for.
+2. Select their application Status (Selected or Rejected).
+3. Click Preview to review the generated text.
+4. Click Send Email to deliver the message via the SMTP server.
 
-🛡️ Technical Highlights
-Frontend: HTML5, JavaScript (Async/Await Fetch), Tailwind CSS.
+---
 
-Backend: Python (FastAPI framework).
+## 🛡️ Technical Highlights
 
-Security: CORS middleware enabled for local development; Sensitive data stored in .env.
-
-Formatting: Used Python triple-quoted strings and .format() for clean template injection.
+- **Frontend:** HTML5, JavaScript (Async/Await Fetch), Tailwind CSS.
+- **Backend:** Python (FastAPI framework).
+- **Security:** CORS middleware enabled for local development; Sensitive data stored in .env.
+- **Formatting:** Used Python triple-quoted strings and .format() for clean template injection.
