@@ -1,5 +1,5 @@
-from FastAPI import FastAPI, HTTPException
-from FastAPI.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from schemas import CandidateEmailRequest
 from email_templates import selection_template, rejection_template
 import smtplib
