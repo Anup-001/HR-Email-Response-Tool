@@ -1,10 +1,12 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 from schemas import CandidateEmailRequest
 from email_templates import selection_template, rejection_template
 import smtplib
 from email.message import EmailMessage
-
+load_dotenv
 app=FastAPI(title="HR Email Tool")
 app.add_middleware(
     CORSMiddleware,
@@ -12,10 +14,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-SMTP_SERVER=''
-SMTP_PORT=587
-SENDER_EMAIL=''
-SENDER_PASSWORD=''
+SMTP_SERVER = os.getenv("SMTP_SERVER")
+SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
+SENDER_EMAIL = os.getenv("SENDER_EMAIL")
+SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
 
 def send_email(to_email: str,subject: str,body:str):
     try:
