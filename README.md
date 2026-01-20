@@ -24,6 +24,7 @@ root/
 ├── requirements.txt        # Python dependencies
 └── README.md               # Project documentation
 
+---
 
 🛠️ Setup Instructions
 1. Backend Setup (Python 3.8+)
