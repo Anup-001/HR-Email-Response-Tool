@@ -6,8 +6,9 @@ from schemas import CandidateEmailRequest
 from email_templates import selection_template, rejection_template
 import smtplib
 from email.message import EmailMessage
-load_dotenv
-app=FastAPI(title="HR Email Tool")
+load_dotenv()
+
+app = FastAPI(title="HR Email Tool")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -19,21 +20,21 @@ SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
 SENDER_EMAIL = os.getenv("SENDER_EMAIL")
 SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
 
-def send_email(to_email: str,subject: str,body:str):
+def send_email(to_email: str, subject: str, body: str):
     try:
-        msg=EmailMessage()
-        msg['From']=SENDER_EMAIL
-        msg['To']=to_email
-        msg['Subject']=subject
+        msg = EmailMessage()
+        msg['From'] = SENDER_EMAIL
+        msg['To'] = to_email
+        msg['Subject'] = subject
         msg.set_content(body)
         
-        with smtplib.SMTP(SMTP_SERVER,SMTP_PORT) as server:
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
             server.starttls()
-            server.login(SENDER_EMAIL,SENDER_PASSWORD)
+            server.login(SENDER_EMAIL, SENDER_PASSWORD)
             server.send_message(msg)
             
     except Exception as e:
-        raise HTTPException(status_code=500,detail=f"Failed to send email: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to send email: {str(e)}")
     
 @app.post("/preview")
 def preview_email(data: CandidateEmailRequest):
@@ -65,9 +66,9 @@ def send_candidate_email(data: CandidateEmailRequest):
     )
 
     send_email(
-        to_email=data.email,
-        subject=f"Regarding your application for {data.position}",
-        body=email_body
+        to_email = data.email,
+        subject = f"Regarding your application for {data.position}",
+        body = email_body
     )
 
     return {"message": "Email sent successfully"}
