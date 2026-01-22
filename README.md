@@ -23,7 +23,7 @@ root/
 ├── .env                    # Private credentials (not to be shared)
 ├── requirements.txt        # Python dependencies
 └── README.md               # Project documentation
-
+```
 ---
 
 ## 🛠️ Setup Instructions
