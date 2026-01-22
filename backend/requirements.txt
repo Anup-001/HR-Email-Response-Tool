@@ -1,4 +1,5 @@
 fastapi
-uvicorn
-pydantic
+uvicorn[standard]
+pydantic[email]
 python-dotenv
+pydantic

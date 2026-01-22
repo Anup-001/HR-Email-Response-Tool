@@ -31,8 +31,17 @@ root/
 ### 1. Backend Setup (Python 3.8+)
 Navigate to the backend directory and install dependencies:
 
+# Create the virtual environment
 ```bash
-pip install fastapi uvicorn pydantic[email] python-dotenv
+python -m venv backend/venv
+```
+# Activate it (Windows)
+```bash
+backend\venv\Scripts\activate
+```
+# Install from the requirements file
+```bash
+pip install -r backend/requirements.txt
 ```
 
 ### 2. Configure Email Settings

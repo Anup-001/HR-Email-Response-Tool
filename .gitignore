@@ -1,1 +1,15 @@
+# --- Python / Backend ---
+backend/venv/
+backend/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# --- Environment Secrets (CRITICAL) ---
 .env
+.env.local
+.env.*.local
+
+# --- Operating System ---
+.DS_Store
+Thumbs.db
