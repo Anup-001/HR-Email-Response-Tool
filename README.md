@@ -31,15 +31,15 @@ root/
 ### 1. Backend Setup (Python 3.8+)
 Navigate to the backend directory and install dependencies:
 
-# Create the virtual environment
+## Create the virtual environment
 ```bash
 python -m venv backend/venv
 ```
-# Activate it (Windows)
+## Activate it (Windows)
 ```bash
 backend\venv\Scripts\activate
 ```
-# Install from the requirements file
+## Install from the requirements file
 ```bash
 pip install -r backend/requirements.txt
 ```
